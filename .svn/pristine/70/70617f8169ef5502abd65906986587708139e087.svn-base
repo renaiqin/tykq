@@ -1,0 +1,38 @@
+<view class="topmain">
+<view class="schoolTitle">学校</view>
+<view class="schoolName">{{flowInfo.LcName}}<text class="bz" catchtap="taskBz">（说明）</text></view>
+<view class="flex helpWarp">任务帮助：
+  <picker class="help" bindchange="bindPickerChange" value="{{typeIndex}}" range-key="{{'HjName'}}" range="{{flowInfo.SchoolFlowLinkListView}}">
+    {{flowInfo.SchoolFlowLinkListView[typeIndex].HjName}}
+  </picker>
+</view>
+</view>
+<view class="blodline"></view>
+
+<view wx:for="{{flowInfo.SchoolFlowLinkListView}}" class="itemWarp {{item.ChildSchoolFlowLinkModel ? 'needAfter' : ''}}" wx:key="{{index}}">
+  <view class="showChild" data-itemIndex="{{index}}"  wx:for-item="item" wx:key="{{index}}" catchtap="{{item.ChildSchoolFlowLinkModel ? 'showChild' : ''}}">
+    <view class="flex toprow">
+      <view class="flex2 taskName">{{item.Xh}}、{{item.HjName}}</view>
+      <view class="flex1 taskDetail" data-id="{{item.Id}}" data-childtext=""  catchtap="{{item.IsCheckIn == 1 ? 'register' : item.IfEnd == 0 ? '' :'flowDetail'}}">{{item.IsCheckIn == 1 ? '登记' : item.IfEnd == 0 ? '' : '查看详情'}}</view>
+      <view class="flex1">{{item.IfEndStr}}</view>
+    </view>
+    <view class="flex">
+      <view class="flex1">{{item.FinishCount}}/{{item.TotalCount}}</view>
+      <view class="flex1" wx:if="{{item.StimeStr != '' && item.EtimeStr != ''}}">{{item.StimeStr == '' ? '至今' : item.StimeStr}} - {{item.EtimeStr == '' ? '至今' : item.EtimeStr}}</view>
+    </view>
+  </view>
+  
+  <view class="childMain" wx:if="{{item.ChildSchoolFlowLinkModel}}" style='height:{{item.showChild == true ? (item.ChildSchoolFlowLinkModel.length * 120) : 0 }}rpx' >   
+  <block wx:for="{{item.ChildSchoolFlowLinkModel}}" wx:for-item="sitem" wx:key="{{sindex}}" wx:for-index="sindex" >
+    <view class="flex childWarp" >
+      <view class="flex2 childName ">{{sitem.Xh}}-{{sitem.SXh}}、{{sitem.HjName}}</view>
+      <view class="flex1 taskDetail" data-id="{{sitem.Id}}" data-childtext="{{sitem.Xh}}-{{sitem.SXh}}环节{{sitem.HjName}}" catchtap="{{sitem.IsCheckIn == 1 ? 'register' : sitem.IfEnd == 0 ? '' :'flowDetail'}}">{{sitem.IsCheckIn == 1 ? '登记' : sitem.IfEnd == 0 ? '' : '查看详情'}}</view>
+      <view class="flex1">{{sitem.IfEndStr}}</view>
+    </view>
+    <view class="timeStyle">{{sitem.StimeStr}} - {{sitem.EtimeStr}}</view>
+  </block>
+  </view>
+</view>
+
+ 
+ 

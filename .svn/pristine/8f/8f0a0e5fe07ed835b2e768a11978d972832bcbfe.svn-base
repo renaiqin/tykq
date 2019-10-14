@@ -1,0 +1,130 @@
+<view class="main diaryMary">
+<view class="positionTop">
+  <view class="diaryType clear">
+    <view catchtap='changeType' data-type="1" class="diaryNormal left {{diaryType == 1? 'checkDiary' : ''}}">我收到的   </view>
+    <view catchtap='changeType' data-type="0" class="diaryNormal left {{diaryType == 0? 'checkDiary' : ''}}">我发出的</view>
+  </view>
+
+  <view class="timeWarp clear">
+    <text class="left pickerText">选择时间：</text>
+    <picker mode="date" value="{{startTime}}" start="2000-01-30" data-dateType="1" end="2050-12-30" bindchange="chooseDate" bindcancel="cancleDate">
+      <view class="picker">
+        <view class="timeStyle startTime left">{{startTime}}</view>
+      </view>
+    </picker>
+    
+    <view class="toText left">-</view>
+    <picker mode="date" value="{{endTime}}" start="2000-01-30" data-dateType="2" end="2050-12-30" bindchange="chooseDate" bindcancel="cancleDate">
+      <view class="picker">
+        <view class="timeStyle left">{{endTime}}</view>
+      </view>
+    </picker>
+  </view>
+
+  <view class="diaryType clear">
+    <text class="left pickerText">日志类型：</text>
+    <view catchtap='changeTab' data-tab="1" class="tabCom {{tab==1 ? 'check' : ''}}">日报</view>
+    <view catchtap='changeTab' data-tab="2" class="tabCom {{tab==2 ? 'check' : ''}}">周报</view>
+    <view catchtap='changeTab' data-tab="3" class="tabCom {{tab==3 ? 'check' : ''}}">月报</view>
+  </view>
+  <view class="searchWarp">
+    <input class="weui-input" class="searchInput" bindinput="bindKeyInput" confirm-type="search" value="{{diarySearch}}" placeholder="输入关键字进行搜索"/>
+    <button size="mini" catchtap="requestData" class="searchHabdel searchButton" type="primary">搜索</button>
+    <button size="mini" class="searchHabdel"  catchtap="cancle">取消</button>
+  </view>
+</view>  
+  <view class="blodline">
+  </view>
+  
+  <scroll-view
+    scroll-y
+    style="height: 1000rpx;"
+    bindscrolltolower="addMore"
+    lower-threshold="200"
+  >
+    <view catchtap='renderDetail' data-id="{{item.Id}}" wx:key="{{index}}" wx:for="{{diaryList}}" >
+      <block  wx:if="{{diaryType == 1}}">
+        <view class="diarylist" wx:if="{{item.Mail_num != selfMail_num}}">
+          <view class=" clear">
+            <text class="name left">{{item.Xm}}</text>
+            
+            <text class="inputtime right">{{item.Inputtime}}</text>
+          </view>
+          <view class="detailList">
+            <text class="rDate" wx:if="{{tab==1 || tab==2}}">{{item.Rdate}}</text>
+            <text class="rDate" wx:if="{{tab==3}}">{{item.Ryear + '-' + item.Rmonth}}</text>
+            <text class="dayText" wx:if="{{tab==1}}">日报</text>
+            <text class="dayText" wx:if="{{tab==2}}">周报</text>
+            <text class="dayText" wx:if="{{tab==3}}">月报</text>
+            <text class="diaryStatus">{{item.MyIfRead == 0 ? '未读' : '已读' }}</text>
+          </view>
+          <view class="detailList">
+            <text class="inline inlineTitle">{{partOne}}：</text>
+            <text class="inline inlineContent">{{item.FinishWork}}</text>
+          </view>
+
+          <view class="detailList">
+            <text class="inline inlineTitle">{{partTwo}}：</text>
+            <text wx:if="{{tab ==1}}" class="inline inlineContent">{{item.NoFinishWork}}</text>
+            <text wx:if="{{tab ==2}}" class="inline inlineContent">{{item.PlanNextWeek}}</text>
+            <text wx:if="{{tab ==3}}" class="inline inlineContent">{{item.followUpWork}}</text>
+          </view>
+          <view class="detailList">
+            <text class="inline inlineTitle">{{partThree}}：</text>
+            <text wx:if="{{tab ==1 || tab ==2}}"  class="inline inlineContent">{{item.followUpWork}}</text>
+            <text wx:if="{{tab ==3}}" class="inline inlineContent">{{item.questionDept}}</text>
+          </view>
+          <view class="detailList">
+            <text class="inline inlineTitle">小结：</text>
+            <text class="inline inlineContent">{{item.subTotal}}</text>
+          </view>
+          <view class="autoline"></view>
+          <view class="readAll">阅读全文</view>
+          </view>
+      </block>
+     
+      
+      <view class="diarylist" wx:else>
+      
+        <view class=" clear">
+          <text class="name left">{{item.Xm}}</text>
+          <text class="inputtime right">{{item.Inputtime}}</text>
+        </view>
+        <view class="detailList clear">
+          <text class="rDate left" wx:if="{{tab==1 || tab==2}}">{{item.Rdate}}</text>
+          <text class="rDate left" wx:if="{{tab==3}}">{{item.Ryear + '-' + item.Rmonth}}</text>
+          <text class="dayText left" wx:if="{{tab==1}}">日报</text>
+          <text class="dayText left" wx:if="{{tab==2}}">周报</text>
+          <text class="dayText left" wx:if="{{tab==3}}">月报</text>
+          <image class="mod-edit left" data-id="{{item.Id}}" catchtap="editDiary" mode="scaleToFill" src="/image/modif-edit.png"></image>
+        </view>
+        <view class="detailList">
+          <text class="inline inlineTitle">{{partOne}}：</text>
+          <text class="inline inlineContent">{{item.FinishWork}}</text>
+        </view>
+
+        <view class="detailList">
+          <text class="inline inlineTitle">{{partTwo}}：</text>
+          <text wx:if="{{tab ==1}}" class="inline inlineContent">{{item.NoFinishWork}}</text>
+          <text wx:if="{{tab ==2}}" class="inline inlineContent">{{item.PlanNextWeek}}</text>
+          <text wx:if="{{tab ==3}}" class="inline inlineContent">{{item.followUpWork}}</text>
+        </view>
+        <view class="detailList">
+          <text class="inline inlineTitle">{{partThree}}：</text>
+          <text wx:if="{{tab ==1 || tab ==2}}"  class="inline inlineContent">{{item.followUpWork}}</text>
+          <text wx:if="{{tab ==3}}" class="inline inlineContent">{{item.questionDept}}</text>
+        </view>
+        <view class="detailList">
+          <text class="inline inlineTitle">小结：</text>
+          <text class="inline inlineContent">{{item.subTotal}}</text>
+        </view>
+        <view class="autoline"></view>
+        <view class="readAll">阅读全文</view>
+      </view>
+    </view>
+  
+  </scroll-view>
+  <view catchtap='writeDiary'wx:if="{{tab==1}}" data-type="1" class="writeButton">写日报</view>
+  <view catchtap='writeDiary'wx:if="{{tab==2}}" data-type="2" class="writeButton">写周报</view>
+  <view catchtap='writeDiary'wx:if="{{tab==3}}" data-type="3" class="writeButton">写月报</view>
+</view>

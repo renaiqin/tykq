@@ -1,0 +1,186 @@
+<!--pages/orderForm/orderFormDetail/orderFormDetail.wxml-->
+<view class="add-sj-wrapper">
+  <view class="section">
+    <text class="title">订单编号:</text>
+    <input disabled value='101010' />
+  </view>
+  <view class="section">
+    <text class="title">项目名称:</text>
+    <text>其他</text>
+  </view>
+  <view class="section">
+    <text class="title">客户联系方式:</text>
+    <input disabled value='hahw' />
+  </view>
+  <view class="section">
+    <text class="title">客户地区:</text>
+    <input disabled value="学校名称" />
+  </view>
+  <view class="section">
+    <text class="title">甲方:</text>
+    <text>初次拜访</text>
+  </view>
+  <view class="section">
+    <text class="title">乙方:</text>
+    <text>查资料电话</text>
+  </view>
+  <view class="section">
+    <text class="title">投入总成本:</text>
+    <text>2020/5/26</text>
+  </view>
+  <view class="section">
+    <text class="title">计费开始月:</text>
+      <input disabled value="20000" />元
+  </view>
+  <view class="section">
+    <text class="title">结算金额:</text>
+    <text>程程</text>
+  </view>
+  <view class="section">
+    <text class="title">需求时间:</text>
+    <text>待成单</text>
+  </view>
+  <view class="section">
+    <text class="title">签订时间:</text>
+    <text>待成单</text>
+  </view>
+   <view class="section">
+    <text class="title">投入回收期:</text>
+    <text>待成单</text>
+  </view>
+   <view class="section">
+    <text class="title">预计回收月份:</text>
+    <text>待成单</text>
+  </view>
+  <view class="section">
+    <text class="title">结算方式:</text>
+    <text>待成单</text>
+  </view>
+  <!-- <view class="blodline"></view> -->
+  <view class="detailTitle">
+    产品明细
+  </view>
+  <view class="section">
+    <text class="title">申请说明:</text>
+    <text>待成单</text>
+  </view>
+  <view class="section">
+    <text class="title">备注:</text>
+    <text>待成单</text>
+  </view>
+  <view class="section">
+    <text class="title">收货人电话:</text>
+    <text>待成单</text>
+  </view>
+  <view class="section">
+    <text class="title">收货地址:</text>
+    <text>待成单</text>
+  </view>
+   <view class="section">
+    <text class="title">所属人:</text>
+    <text>待成单</text>
+  </view>
+  <view class="section">
+    <text class="title">收件人:</text>
+    <text>待成单</text>
+  </view>
+  <view class="section">
+    <text class="title">提交时间:</text>
+    <text>待成单</text>
+  </view>
+  <!-- <view class="blodline"></view> -->
+  <view class="product">
+    <view class="productTitle">产品1</view>
+    <view class="section">
+      <text class="title">产品名称:</text>
+      <text>待成单</text>
+    </view>
+      <view class="section">
+      <text class="title">单价:</text>
+      <text>待成单</text>
+    </view>
+      <view class="section">
+      <text class="title">数量:</text>
+      <text>待成单</text>
+    </view>
+      <view class="section">
+      <text class="title">金额:</text>
+      <text>待成单</text>
+    </view>
+      <view class="section">
+      <text class="title">质保期:</text>
+      <text>待成单</text>
+    </view>
+      <view class="section">
+      <text class="title">结算方式:</text>
+      <text>待成单</text>
+    </view>
+    <view class="section">
+      <text class="title">备注:</text>
+      <text>待成单</text>
+    </view>
+  </view>
+  <view class="product">
+    <view class="productTitle">产品2</view>
+    <view class="section">
+      <text class="title">产品名称:</text>
+      <text>待成单</text>
+    </view>
+      <view class="section">
+      <text class="title">单价:</text>
+      <text>待成单</text>
+    </view>
+      <view class="section">
+      <text class="title">数量:</text>
+      <text>待成单</text>
+    </view>
+      <view class="section">
+      <text class="title">金额:</text>
+      <text>待成单</text>
+    </view>
+      <view class="section">
+      <text class="title">质保期:</text>
+      <text>待成单</text>
+    </view>
+      <view class="section">
+      <text class="title">结算方式:</text>
+      <text>待成单</text>
+    </view>
+    <view class="section">
+      <text class="title">备注:</text>
+      <text>待成单</text>
+    </view>
+  </view>
+  <view class="detailTitle">
+    审批记录
+  </view>
+  <view class="section">
+    <text class="title">批次:</text>
+    <text>待成单</text>
+  </view>
+  <view class="section">
+    <text class="title">环节:</text>
+    <text>待成单</text>
+  </view>
+  <view class="section">
+    <text class="title">审批人:</text>
+    <text>待成单</text>
+  </view>
+  <view class="section">
+    <text class="title">结果:</text>
+    <text>待成单</text>
+  </view>
+  <view class="section">
+    <text class="title">备注:</text>
+    <text>待成单</text>
+  </view>
+  <view class="section">
+    <text class="title">审批时间:</text>
+    <text>待成单</text>
+  </view>
+  <!-- <view class="section-textarea">
+    <text class="title">备注:</text>
+    <textarea disabled value="我是备注内容" />
+  </view> -->
+</view>
+

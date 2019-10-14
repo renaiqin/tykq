@@ -1,0 +1,129 @@
+// pages/sj/addSj/addSj.js
+import formatTime from "../../../utils/util.js"
+var app = getApp();
+
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    number: null, // 商机编号
+    sjClassify: ['其他'], // 商机分类
+    keyInfo: { key1: 0, key2: 0, }, // 用来纪录每个下拉框选中的索引
+    name: '', // 商机名称
+    salesStage: ['初次拜访', '商务谈判', '签约'], // 销售阶段
+    contact: ['查资料打电话'], // 联系情况
+    date: formatTime.formatTime(new Date()),
+    content: '', // 跟进内容
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    // this.getDictionary()
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  },
+
+  // 获取数据字典
+  getDictionary: function () {
+    app.API.getDictionary({ 'key': 'SellStepEnum' }).then((res) => {
+      console.log(res)
+    });
+  },
+
+  // 选中下拉框
+  bindPickerChange: function (e) {
+    var newKeyInfo = this.data.keyInfo;
+    var target = {
+      'salesStage': function () {
+        newKeyInfo['key1'] = parseInt(e.detail.value);
+        return newKeyInfo;
+      },
+      'contact': function () {
+        newKeyInfo['key2'] = parseInt(e.detail.value);
+        return newKeyInfo;
+      },
+    }
+    var info = target[e.target.dataset.type]();
+    this.setData({
+      keyInfo: info,
+    })
+  },
+
+  // 选择日期
+  chooseDate: function (e) {
+    console.log(e.detail.value)
+    this.setData({
+      date: e.detail.value,
+    })
+  },
+  cancleDate: function () {
+    console.log(2)
+  },
+
+  // 提交跟进
+  formSubmit: function (e) {
+    if (!this.data.content) {
+      this.showToast('请输入具体跟进内容');
+      return;
+    }
+  },
+
+  // toast
+  showToast: function (title, icon = 'none') {
+    wx.showToast({
+      title,
+      icon,
+    })
+  },
+})

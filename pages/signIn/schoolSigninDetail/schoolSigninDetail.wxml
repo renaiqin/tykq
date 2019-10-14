@@ -1,0 +1,39 @@
+<view class="timeWarp clear">
+   
+    <picker mode="date" value="{{startTime}}" start="2000-01-30" data-dateType="1" end="2050-12-30" bindchange="chooseDate" bindcancel="cancleDate">
+      <view class="picker">
+        <view class="timeStyle startTime left">{{startTime}}</view>
+      </view>
+    </picker>
+    
+    <view class="toText left">至</view>
+    <picker mode="date" value="{{endTime}}" start="2000-01-30" data-dateType="2" end="2050-12-30" bindchange="chooseDate" bindcancel="cancleDate">
+      <view class="picker">
+        <view class="timeStyle left">{{endTime}}</view>
+      </view>
+    </picker>
+  </view>
+<view class="schoolname">{{schoolname}}</view>
+<scroll-view
+      scroll-y="true"
+      bindscrolltolower="addMore"
+      lower-threshold="200"
+      class="scrollView"
+      scroll-top="100"
+    >
+  <view class="itemWarp" wx:for="{{infoList}}"wx:key="index">
+    <view class="clear">
+      <text class="item-one left"></text>
+      <text class="item-two two-name left">{{item.Xm}}</text>
+      <text class="item-two left time">{{item.QdTime}}</text>
+    </view>
+    <view class="item-content">拜访目的：{{item.visitPurpse}}</view>
+    <view class="item-content">维护分类：{{item.QDClass}}</view>
+    <view class="item-content">签到地址：{{item.QdAddress}}</view>
+    <view class="item-content">联系人：{{item.linkMan}}</view>
+    <view class="item-content">备注：{{item.bz}}</view>
+  </view>
+</scroll-view>
+<view wx:if="{{infoList.length == 0}}" class="emptyText">
+  暂无数据
+</view>
