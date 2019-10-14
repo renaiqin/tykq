@@ -7,7 +7,7 @@
 
   <view class="list noBorder clear">
     <view class="listIcon left"><image class="iconImg" src="/image/boxbg2.png"></image></view>
-    <view class="listName left"></view>
+    <view class="listName left">地址</view>
     <view class="listValue left">{{address}}</view>
   </view>
   
